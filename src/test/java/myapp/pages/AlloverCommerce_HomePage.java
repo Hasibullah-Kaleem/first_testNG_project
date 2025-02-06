@@ -22,5 +22,11 @@ public class AlloverCommerce_HomePage {
     @FindBy(linkText = "Sign Out")
     public WebElement signOutButton;
 
+    @FindBy (xpath = "//span[normalize-space()='Register']")
+    public WebElement registerOption;
+
+    @FindBy (xpath = "//span[normalize-space()='Sign Out']")
+    public WebElement signOutOption;
+
 
 }
