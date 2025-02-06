@@ -58,7 +58,7 @@ public class US_14_VendorAddProduct {
     private String imagePath2;
 
     @BeforeMethod
-    public void setUp() throws AWTException, URISyntaxException {
+    public void setUp() throws AWTException {
 
         homePage = new AlloverCommerce_HomePage();
         loginPage = new AlloverCommerce_VendorLoginPage();
@@ -111,7 +111,7 @@ public class US_14_VendorAddProduct {
     }
 
     @Test
-    public void test01() throws AWTException {
+    public void test01() {
 
         BrowserUtils.dropdownSelectByIndex(addProductPage.productTypeDropdown, 0);
 
