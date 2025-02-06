@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.net.URISyntaxException;
 
 
 import static org.testng.Assert.assertEquals;
@@ -50,19 +52,13 @@ public class US_14_VendorAddProduct {
     AlloverCommerce_VendorMyAcountPage myAccountPage;
     AlloverCommerce_StoreManagerPage storeManagerPage;
     AlloverCommerce_VendorAddProductPage addProductPage;
-
     Robot robot;
-    String pathOfImage1 = "C:\\Users\\KM\\Desktop\\shirts\\redshirt.png";
-    String pathOfImage2 = "C:\\Users\\KM\\Desktop\\shirts\\shirt.png";
+    File file;
+    private String imagePath1;
+    private String imagePath2;
 
     @BeforeMethod
-    public void setUp() throws AWTException {
-
-        ExtentReportUtils.createTestReport("AllOverCommerce Project Test Report for US_14", "Testing the Adding New Product functionality");
-
-        Driver.getDriver().get(ConfigReader.getProperty("allOverCommerce_url"));
-
-        ExtentReportUtils.pass("User navigated to the page.");
+    public void setUp() throws AWTException, URISyntaxException {
 
         homePage = new AlloverCommerce_HomePage();
         loginPage = new AlloverCommerce_VendorLoginPage();
@@ -70,6 +66,12 @@ public class US_14_VendorAddProduct {
         storeManagerPage = new AlloverCommerce_StoreManagerPage();
         addProductPage = new AlloverCommerce_VendorAddProductPage();
         robot = new Robot();
+
+        ExtentReportUtils.createTestReport("AllOverCommerce Project Test Report for US_14", "Testing the Adding New Product functionality");
+
+        Driver.getDriver().get(ConfigReader.getProperty("allOverCommerce_url"));
+
+        ExtentReportUtils.pass("User navigated to the page.");
 
         homePage.signInIcon.click();
 
@@ -98,6 +100,14 @@ public class US_14_VendorAddProduct {
 
         ExtentReportUtils.pass("User hovered over the Products tab and clicked on Add New tab.");
 
+        //Load the image paths
+        ClassLoader classLoader = getClass().getClassLoader();
+        file = new File(classLoader.getResource("test-data/redshirt.png").getFile());
+        imagePath1 = file.getAbsolutePath();
+
+        file = new File(classLoader.getResource("test-data/shirt.png").getFile());
+        imagePath2 = file.getAbsolutePath();
+
     }
 
     @Test
@@ -117,7 +127,7 @@ public class US_14_VendorAddProduct {
         WaitUtils.waitFor(3);
 
         robot.delay(2000);
-        StringSelection selection = new StringSelection(pathOfImage1);
+        StringSelection selection = new StringSelection(imagePath1);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -142,7 +152,7 @@ public class US_14_VendorAddProduct {
         addProductPage.uploadImageTab.click();
         addProductPage.selectImage2.click();
         WaitUtils.waitFor(2);
-        StringSelection selection2 = new StringSelection(pathOfImage2);
+        StringSelection selection2 = new StringSelection(imagePath2);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection2, null);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -254,7 +264,7 @@ public class US_14_VendorAddProduct {
         WaitUtils.waitFor(3);
 
         robot.delay(2000);
-        StringSelection selection = new StringSelection(pathOfImage1);
+        StringSelection selection = new StringSelection(imagePath1);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -347,11 +357,10 @@ public class US_14_VendorAddProduct {
         assertTrue(addProductPage.incorrectInput.getText().contains("Please insert Product Title before submit.\n" +
                 "Gallery Images: This field is required.\n" +
                 "Product cat: This field is required."));
-
+        ActionsUtils.actionsScrollDown();
         ExtentReportUtils.passAndCaptureScreenshot("User observes multiple warning messages.");
         ExtentReportUtils.info("Validation works as expected: Adding a product with empty required fields is unsuccessful.");
     }
-
 
     @AfterMethod
     public void tearDown() {
@@ -360,6 +369,4 @@ public class US_14_VendorAddProduct {
         Driver.closeDriver();
 
     }
-
-
 }
