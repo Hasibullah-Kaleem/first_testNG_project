@@ -25,6 +25,4 @@ public class AlloverCommerce_VendorLoginPage {
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signinButton;
 
-
-
 }
