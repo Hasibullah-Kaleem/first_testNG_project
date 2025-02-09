@@ -1,4 +1,5 @@
 
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -42,10 +43,13 @@ build/
 .DS_Store
 
 .idea/
-first_testNG_project/
-test-output/
-.vscode/
-.DS_Store
-.idea/
+#first_testNG_project/
+#test-output/
+#.vscode/
+#.DS_Store
+#.idea/
 notepad .gitignore
-
+#.idea/
+#*.iml
+#target/
+#test-output/
