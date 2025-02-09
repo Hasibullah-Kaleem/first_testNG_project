@@ -1,3 +1,4 @@
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -39,3 +40,12 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+.idea/
+first_testNG_project/
+test-output/
+.vscode/
+.DS_Store
+.idea/
+notepad .gitignore
+
