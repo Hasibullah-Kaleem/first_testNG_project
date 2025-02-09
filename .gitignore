@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -14,9 +17,12 @@ target/
 *.iml
 *.ipr
 
+<<<<<<< HEAD
 ### Added by me ###
 .idea/uiDesigner.xml
 
+=======
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -40,6 +46,7 @@ build/
 .vscode/
 
 ### Mac OS ###
+<<<<<<< HEAD
 .DS_Store
 
 .idea/
@@ -53,3 +60,6 @@ notepad .gitignore
 #*.iml
 #target/
 #test-output/
+=======
+.DS_Store
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157

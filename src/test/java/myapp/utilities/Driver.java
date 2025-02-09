@@ -30,9 +30,12 @@ public class Driver {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     //    2 Driver.getDriver() will be used in the test classes
 //    This will return copy of the driver instance for each thread(browser)
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
     public static WebDriver getDriver(){
         if (driver.get()==null){
             initializeDriver();
@@ -44,8 +47,11 @@ public class Driver {
 
 
     //    3. initialize the WebDriver instance
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
     public static void initializeDriver(){
         switch (ConfigReader.getProperty("browser")){
             case "chrome":
@@ -77,8 +83,11 @@ public class Driver {
         driver.get().manage().window().maximize();
     }
     //    4. close driver
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
     public static void closeDriver(){
         if (driver!=null){
             driver.get().quit();
@@ -86,4 +95,8 @@ public class Driver {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157

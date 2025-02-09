@@ -55,4 +55,8 @@ public class MediaUtils {
         return new File(path).getAbsolutePath();
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
