@@ -76,9 +76,7 @@ public class US_04_ShippingAddressPage {
  @FindBy(xpath = "//button[text()='Save address']")
  public WebElement addressButton;
 
-//
-// @FindBy(xpath ="//button[@name='save_address']")
-// public WebElement addressButton;
+
 
 
 
