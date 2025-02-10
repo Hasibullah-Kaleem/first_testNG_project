@@ -13,7 +13,6 @@ import static myapp.utilities.MediaUtils.takeScreenshotOfTheEntirePageAsString;
 
 public class ExtentReportUtils {
 
-
     protected static ExtentReports extentReports;
     protected static ExtentSparkReporter extentSparkReporter;
     protected static ExtentTest extentTest;
@@ -31,22 +30,12 @@ public class ExtentReportUtils {
 //        Create extent report
         extentReports = new ExtentReports();
 //        ***********ADDING CUSTOM SYSTEM INFORMATION ***********
-<<<<<<< HEAD
-        extentReports.setSystemInfo("TechProEducation","America");
-        extentReports.setSystemInfo("Test Environment","Regression");
-        extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Team Name","CRM");
-        extentReports.setSystemInfo("QA","WalTER White");
-        extentReports.setSystemInfo("Feature Number","FE1056");
-
-=======
         extentReports.setSystemInfo("Application Name","Apple M2 Unit");
         extentReports.setSystemInfo("Test Environment","Regression");
         extentReports.setSystemInfo("Browser","Chrome");
         extentReports.setSystemInfo("Team Name","Eagles");
         extentReports.setSystemInfo("SQA","Walter");
         extentReports.setSystemInfo("Feature Number","FE1056");
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
 //        ***********DOCUMENT INFORMATION************************
         extentSparkReporter.config().setReportName("My Regression Report");
         extentSparkReporter.config().setDocumentTitle("My Regression Extent Reports");
@@ -92,9 +81,4 @@ public class ExtentReportUtils {
     public static void flush(){
         extentReports.flush();
     }
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157

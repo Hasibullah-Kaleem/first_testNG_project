@@ -16,8 +16,8 @@ public class Driver {
     /*
        Note: all of our current codes still works, because this driver is work for quential(singleton) and parallel testing
         */
-    private Driver(){}
-
+    private Driver() {
+    }
 
 
     //    private static WebDriver driver;
@@ -26,34 +26,22 @@ public class Driver {
 //    driver is thread safe variable to make sure each thread can create a copy of its own driver instance
 
 
-
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     //    2 Driver.getDriver() will be used in the test classes
 //    This will return copy of the driver instance for each thread(browser)
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
-    public static WebDriver getDriver(){
-        if (driver.get()==null){
+    public static WebDriver getDriver() {
+        if (driver.get() == null) {
             initializeDriver();
         }
         return driver.get();
     }
 
 
-
-
     //    3. initialize the WebDriver instance
-<<<<<<< HEAD
 
-
-=======
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
-    public static void initializeDriver(){
-        switch (ConfigReader.getProperty("browser")){
+    public static void initializeDriver() {
+        switch (ConfigReader.getProperty("browser")) {
             case "chrome":
                 WebDriverManager.chromedriver().setup(); //WebDriverManager, ihtiyaç duyduğunuz tarayıcı sürücüsünün doğru sürümünü otomatik olarak indirir ve ayarlar.
                 // Bu, özellikle tarayıcılar ve sürücüler sık sık güncellendiğinde faydalıdır.etup() metodu, tarayıcı sürücülerinin her zaman doğru sürümde ve çalışmaya hazır olmasını sağlayarak, otomasyon testlerinizin sorunsuz bir şekilde çalışmasına yardımcı olur.
@@ -83,20 +71,12 @@ public class Driver {
         driver.get().manage().window().maximize();
     }
     //    4. close driver
-<<<<<<< HEAD
 
-
-=======
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
-    public static void closeDriver(){
-        if (driver!=null){
+    public static void closeDriver() {
+        if (driver != null) {
             driver.get().quit();
             driver.remove();
         }
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157

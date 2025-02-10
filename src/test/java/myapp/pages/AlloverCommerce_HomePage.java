@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AlloverCommerce_HomePage {
-    public AlloverCommerce_HomePage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public AlloverCommerce_HomePage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(linkText = "Sign In")
@@ -22,14 +22,10 @@ public class AlloverCommerce_HomePage {
     @FindBy(linkText = "Sign Out")
     public WebElement signOutButton;
 
-<<<<<<< HEAD
-=======
-    @FindBy (xpath = "//span[normalize-space()='Register']")
+    @FindBy(xpath = "//span[normalize-space()='Register']")
     public WebElement registerOption;
 
-    @FindBy (xpath = "//span[normalize-space()='Sign Out']")
+    @FindBy(xpath = "//span[normalize-space()='Sign Out']")
     public WebElement signOutOption;
-
->>>>>>> b0c3fbf1fefdbe09786bf96c44a484dc1b398157
 
 }
