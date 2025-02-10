@@ -103,7 +103,7 @@ public class US_04_ShippingAddressTest {
         WaitUtils.waitFor(3);
         us_04_shippingAddressPage.addressButton.click();
 
-        assertTrue(us_04_shippingAddressPage.addressButton.isDisplayed(), "Save operation might have successful.");
+        assertTrue(us_04_shippingAddressPage.addressButton.isDisplayed(), "Save operation might have successfulgit remote set-url origin https://github.com/Hasibullah-Kaleem/first_testNG_project.git\n.");
         //  MediaUtils.takeScreenshotOfTheEntirePage();
     }
 
