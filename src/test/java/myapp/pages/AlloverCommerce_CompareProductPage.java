@@ -98,7 +98,7 @@ public class AlloverCommerce_CompareProductPage  {
     @FindBy(xpath = "//img[@alt='Diablo']\n")
     public WebElement productImage3;
 
-    @FindBy(xpath = "//img[contains(@src, 'amblem-300x300.png')]\n")
+    @FindBy(partialLinkText = "E Book")
     public WebElement productImage4;
 
 
@@ -113,7 +113,7 @@ public class AlloverCommerce_CompareProductPage  {
     @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div[4]/ul/li[1]/div/figure")
     public WebElement productMen1;
 
-    @FindBy(xpath = "//a[contains(text(),'Men sweater')]")
+    @FindBy(partialLinkText = "Men sweater")
     public WebElement productMen2;
 
 

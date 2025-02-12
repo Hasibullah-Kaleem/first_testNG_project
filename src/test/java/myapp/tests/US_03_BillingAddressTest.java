@@ -41,6 +41,8 @@ public class US_03_BillingAddressTest {
         us_03_billingAddressPage.signOutButton.click();
 
 
+
+
         // Verify the user is redirected to the My Account page
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("my-account"), "Failed to redirect to My Account page.");
     }

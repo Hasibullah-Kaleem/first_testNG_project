@@ -5,6 +5,8 @@ import myapp.pages.AlloverCommerce_ShippingAdressPage;
 import myapp.pages.AlloverCommerce_VendorLoginPage;
 import myapp.pages.AlloverCommerce_VendorMyAcountPage;
 import myapp.utilities.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -47,10 +49,12 @@ public class US_13_VendorShippingAddress {
     AlloverCommerce_VendorMyAcountPage myAccountPage;
     AlloverCommerce_ShippingAdressPage shippingAddressPage;
     Faker faker;
+    Actions actions;
+    protected WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
-
+        driver= Driver.getDriver();
         ExtentReportUtils.createTestReport("AllOverCommerce Project Test Report for US_13", "Testing the functionality of updating the shipping address.");
 
         Driver.getDriver().get(ConfigReader.getProperty("allOverCommerce_url"));
@@ -76,13 +80,15 @@ public class US_13_VendorShippingAddress {
         ActionsUtils.actionsScrollDown();
         WaitUtils.waitFor(3);
         JSUtils.JSclickWithTimeout(homePage.myAccout);
-        myAccountPage.addresses.click();
+        WaitUtils.waitFor(3);
+        actions=new Actions(Driver.getDriver());
+        actions.moveToElement(myAccountPage.addresses).click().perform();
 
         ExtentReportUtils.pass("User scrolled down to the footer of the page and clicked on My Account tab.");
 
         WaitUtils.waitFor(3);
         ActionsUtils.actionsScrollDown();
-        shippingAddressPage.editShippingAddress.click();
+
         WaitUtils.waitFor(5);
 
         ExtentReportUtils.pass("User clicked on 'Edit Your Shipping Address' tab.");
@@ -91,7 +97,8 @@ public class US_13_VendorShippingAddress {
 
     @Test
     public void test01() {
-
+        actions.moveToElement(shippingAddressPage.editShippingAddress).click().perform();
+        WaitUtils.waitFor(3);
         shippingAddressPage.firstNameShipping.clear();
         shippingAddressPage.firstNameShipping.sendKeys(faker.name().firstName());
 
@@ -158,6 +165,7 @@ public class US_13_VendorShippingAddress {
 
     @Test
     public void test02() {
+        actions.moveToElement(shippingAddressPage.editShippingAddress).click().perform();
         shippingAddressPage.firstNameShipping.clear();
         shippingAddressPage.firstNameShipping.sendKeys(faker.name().firstName());
 

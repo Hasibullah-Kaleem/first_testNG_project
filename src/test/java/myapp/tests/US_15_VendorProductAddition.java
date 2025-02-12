@@ -1,7 +1,9 @@
 package myapp.tests;
+import com.github.javafaker.Faker;
 import myapp.pages.*;
 import myapp.utilities.*;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.json.Json;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -69,9 +71,11 @@ public class US_15_VendorProductAddition {
     AlloverCommerce_StoreManagerPage storeManagerPage;
     AlloverCommerce_VendorAddProductPage addProductPage;
     AlloverCommerce_ShippingMenuPage shippingMenuPage;
+    ClassLoader classLoader = getClass().getClassLoader();
     Robot robot;
     File file;
     private String imagePath;
+    Actions actions;
 
 
     @BeforeMethod
@@ -83,19 +87,19 @@ public class US_15_VendorProductAddition {
         storeManagerPage = new AlloverCommerce_StoreManagerPage();
         addProductPage = new AlloverCommerce_VendorAddProductPage();
         shippingMenuPage = new AlloverCommerce_ShippingMenuPage();
-        robot = new Robot();
+
 
         ExtentReportUtils.createTestReport("Test Report for US_15", "Testing options functionality when Vendor adds a new product");
 
-        ClassLoader classLoader = getClass().getClassLoader();
-        file = new File(Objects.requireNonNull(classLoader.getResource("test-data/chess2.jpg")).getFile());
-        String imagePath = file.getAbsolutePath();
+
+
+
 
 
     }
 
     @Test
-    public void testCase01() {
+    public void testCase01() throws AWTException {
 
         Driver.getDriver().get(ConfigReader.getProperty("allOverCommerce_url"));
 
@@ -144,53 +148,62 @@ public class US_15_VendorProductAddition {
         WaitUtils.waitFor(2);
 
         addProductPage.selectImage1.click();
+        WaitUtils.waitFor(3);
+
+        file = new File(classLoader.getResource("test-data/chess2.jpg").getFile());
+        imagePath = file.getAbsolutePath();
 
         StringSelection selection = new StringSelection(imagePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+        robot = new Robot();
         
-       robot.keyPress(KeyEvent.VK_META);
-       robot.keyPress(KeyEvent.VK_TAB);
-       robot.keyRelease(KeyEvent.VK_TAB);
-       robot.keyRelease(KeyEvent.VK_META);
+       robot.keyPress(KeyEvent.VK_CONTROL);
+       robot.keyPress(KeyEvent.VK_V);
+       robot.keyRelease(KeyEvent.VK_V);
+       robot.keyRelease(KeyEvent.VK_CONTROL);
        robot.delay(500);
 
-        robot.keyPress(KeyEvent.VK_META);
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_G);
-        robot.keyRelease(KeyEvent.VK_G);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-        robot.keyRelease(KeyEvent.VK_META);
-        robot.delay(500);
-
-        robot.keyPress(KeyEvent.VK_META);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_META);
-        robot.delay(500);
-
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(500);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
-        WaitUtils.waitFor(13);
-
-        JSUtils.JSclickWithTimeout(addProductPage.selectPastedImage);
-
+        WaitUtils.waitFor(8);
+        actions = new Actions(Driver.getDriver());
+        actions.moveToElement(addProductPage.selectPastedImage).click().perform();
+        WaitUtils.waitFor(6);
+//        robot.keyPress(KeyEvent.VK_G);
+//        robot.keyRelease(KeyEvent.VK_G);
+//        robot.keyRelease(KeyEvent.VK_SHIFT);
+//        robot.keyRelease(KeyEvent.VK_META);
+//        robot.delay(500);
+//
+//        robot.keyPress(KeyEvent.VK_META);
+//        robot.keyPress(KeyEvent.VK_V);
+//        robot.keyRelease(KeyEvent.VK_V);
+//        robot.keyRelease(KeyEvent.VK_META);
+//        robot.delay(500);
+//
+//        robot.keyPress(KeyEvent.VK_ENTER);
+//        robot.keyRelease(KeyEvent.VK_ENTER);
+//        robot.delay(500);
+//
+//        robot.keyPress(KeyEvent.VK_ENTER);
+//        robot.keyRelease(KeyEvent.VK_ENTER);
+//
+//        WaitUtils.waitFor(13);
+//
+//        JSUtils.JSclickWithTimeout(addProductPage.selectPastedImage);
+//
         ExtentReportUtils.pass("Vendor successfully uploads an image.");
-
+//
         WaitUtils.waitFor(2);
-
+//
         ActionsUtils.actionsHoverOverOnElement(addProductPage.addImage2);
         JSUtils.JSclickWithTimeout(addProductPage.addImage2);
-
-        
-
+//
+//
+//
         JSUtils.JSclickWithTimeout(shippingMenuPage.secondImage);
         JSUtils.JSclickWithTimeout(addProductPage.addToGallery);
-
+//
         ExtentReportUtils.pass("Vendor chose image from the Gallery");
 
         WaitUtils.waitFor(1);
@@ -201,8 +214,12 @@ public class US_15_VendorProductAddition {
         ExtentReportUtils.pass("Vendor selected relevant check box from Category section");
 
         //        Enter a valid data into SKU input box
+        shippingMenuPage.skuInput.clear();
+        WaitUtils.waitFor(3);
+        Faker faker = new Faker();
+        String sku = String.valueOf(faker.number().numberBetween(2,2000));
 
-        shippingMenuPage.skuInput.sendKeys("chess123");
+        shippingMenuPage.skuInput.sendKeys(sku);
 
         ExtentReportUtils.pass("Vendor entered unique SKU in SKU input field");
 
@@ -236,14 +253,14 @@ public class US_15_VendorProductAddition {
         ActionsUtils.actionsHoverOverOnElement(addProductPage.submitButton);
         addProductPage.submitButton.click();
         WaitUtils.waitFor(3);
-        
+
         ExtentReportUtils.pass("Vendor clicked on Submit button.");
 
         assertEquals(addProductPage.publishedTag.getText(), "Published");
 
         ExtentReportUtils.pass("Success message is displayed: Product successfully published");
 
-        
+
     }
 
     @Test

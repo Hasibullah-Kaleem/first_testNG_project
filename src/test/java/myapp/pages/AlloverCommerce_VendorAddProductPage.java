@@ -54,4 +54,7 @@ public class AlloverCommerce_VendorAddProductPage {
     public WebElement publishedTag;
     @FindBy(xpath = "//*[@id='wcfm_products_simple_submit']/div")
     public WebElement incorrectInput;
+
+    @FindBy(xpath = "//*[@id='__wp-uploader-id-24']/div[4]/div/div[2]/button")
+    public WebElement clickSelectButton;
 }

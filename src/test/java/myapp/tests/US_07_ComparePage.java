@@ -4,8 +4,10 @@ import myapp.pages.AlloverCommerce_CompareProductPage;
 import myapp.pages.AlloverCommerce_CompareProductPage.*;
 import myapp.utilities.*;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,12 +15,14 @@ import org.testng.annotations.Test;
 
 public class US_07_ComparePage {
 
-
+    AlloverCommerce_CompareProductPage comparePage;
     protected WebDriver driver;
+    Actions action;
 
     @BeforeMethod
     public void setUp() {
         driver = Driver.getDriver();
+        action= new Actions(Driver.getDriver());
     }
 
     @Test
@@ -31,21 +35,27 @@ public class US_07_ComparePage {
         //Given user is on the application home page  https://allovercommerce.com/
         driver.get(ConfigReader.getProperty("allOverCommerce_url"));
 
-        AlloverCommerce_CompareProductPage comparePage = new AlloverCommerce_CompareProductPage();
+        comparePage = new AlloverCommerce_CompareProductPage();
         ActionsUtils actions = new ActionsUtils();
 
         ExtentReportUtils.pass("User is on the Home page");
 
-        // comparePage.scaleIcon.click();
+        ActionsUtils.actionsHoverOverOnElement(comparePage.scaleIcon);
 
-        BrowserUtils.clickWithTimeOut(comparePage.scaleIcon, 3);
+
+
+        action.moveToElement(comparePage.scaleIcon).click().perform();
+        WaitUtils.waitFor(3);
+
+       // BrowserUtils.clickWithTimeOut(comparePage.scaleIcon, 3);
         ExtentReportUtils.pass("User added the product to the compare page");
-        Thread.sleep(2000);
+
         ExtentReportUtils.passAndCaptureScreenshot("Product added to Compare list....");
 
 
         ActionsUtils.actionsDoubleClick(comparePage.centralPanel);
         // Scroll down using arrow keys
+        ActionsUtils.actionsScrollDown();
         ActionsUtils.actionsScrollDown();
         ExtentReportUtils.passAndCaptureScreenshot("User Scroll-down the page....");
         Thread.sleep(2000);
@@ -53,9 +63,9 @@ public class US_07_ComparePage {
 
         ActionsUtils.actionsHoverOverOnElement(comparePage.procuct2);
         ExtentReportUtils.pass("User hover over the second product to add it to the compare page");
-        BrowserUtils.clickWithTimeOut(comparePage.scaleIcon3, 3);
+        action.moveToElement(comparePage.scaleIcon3).click().perform();
 
-        Thread.sleep(2000);
+
         ExtentReportUtils.pass("User added the second product to the compare page");
 
 
@@ -79,7 +89,7 @@ public class US_07_ComparePage {
         System.out.println("US07_TC02 is running...");
         AlloverCommerce_CompareProductPage comparePage = new AlloverCommerce_CompareProductPage();
 
-        ActionsUtils actions = new ActionsUtils();
+       // ActionsUtils actions = new ActionsUtils();
         ExtentReportUtils.createTestReport("UI Test ,", "Compare Page Test");
 
         //Given user is on the application home page  https://allovercommerce.com/
@@ -116,23 +126,31 @@ public class US_07_ComparePage {
 
         Thread.sleep(2000);
         ActionsUtils.actionsDoubleClick(comparePage.navigationPanel);
+        action.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN).build().perform();
 
-        ActionsUtils.actionsHoverOverOnElement(comparePage.priceProduct3);
-        Thread.sleep(1000);
-        BrowserUtils.clickWithTimeOut(comparePage.addCompare3, 3);
+        WaitUtils.waitFor(3);
+        action.moveToElement(comparePage.priceProduct3).perform();
+
+        action.moveToElement(comparePage.addCompare3).click().perform();
+        //ActionsUtils.actionsHoverOverOnElement(comparePage.priceProduct3);
+
+        //BrowserUtils.clickWithTimeOut(comparePage.addCompare3, 3);
         ExtentReportUtils.pass("User added the fourth product to the compare page");
         ExtentReportUtils.passAndCaptureScreenshot("Third product added to the compare page....");
 
         Thread.sleep(2000);
         ActionsUtils.actionsDoubleClick(comparePage.navigationPanel);
 
-        ActionsUtils.actionsHoverOverOnElement(comparePage.productImage4);
+        action.sendKeys(Keys.ARROW_DOWN,Keys.PAGE_DOWN).build().perform();
+        action.moveToElement(comparePage.productImage4).perform();
         Thread.sleep(1000);
-        BrowserUtils.clickWithTimeOut(comparePage.addCompare4, 3);
+
+        WaitUtils.waitFor(3);
+        action.moveToElement(comparePage.addCompare4).click().perform();
         ExtentReportUtils.pass("User added the fourth product to the compare page");
         ExtentReportUtils.passAndCaptureScreenshot("Fourth product added to the compare page....");
 
-        Thread.sleep(2000);
+
 
 
         //ActionsUtils.actionsDoubleClick(comparePage.navigationPanel);
@@ -153,7 +171,7 @@ public class US_07_ComparePage {
     public void US07_TC03() throws InterruptedException {
         System.out.println("US07_TC03 is running...");
         AlloverCommerce_CompareProductPage comparePage = new AlloverCommerce_CompareProductPage();
-        ActionsUtils actions = new ActionsUtils();
+       // ActionsUtils actions = new ActionsUtils();
 
         ExtentReportUtils.createTestReport("UI Test ,", "Compare Page Test");
 
@@ -172,8 +190,10 @@ public class US_07_ComparePage {
         ExtentReportUtils.passAndCaptureScreenshot("First product added to the compare page....");
         Thread.sleep(2000);
         ActionsUtils.actionsDoubleClick(comparePage.navigationPanel);
-
-        ActionsUtils.actionsHoverOverOnElement(comparePage.productMen2);
+        action.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN).build().perform();
+        WaitUtils.waitFor(3);
+        action.moveToElement(comparePage.productMen2).perform();
+       // ActionsUtils.actionsHoverOverOnElement(comparePage.productMen2);
         Thread.sleep(1000);
         ExtentReportUtils.pass("User hover over the second product to add it to the compare page");
         BrowserUtils.clickWithTimeOut(comparePage.scaleProductMen2, 3);
@@ -195,15 +215,16 @@ public class US_07_ComparePage {
     @Test
     public void US07_TC04() throws InterruptedException {
         System.out.println("US07_TC04 is running...");
-        AlloverCommerce_CompareProductPage comparePage = new AlloverCommerce_CompareProductPage();
-        ActionsUtils actions = new ActionsUtils();
+        comparePage = new AlloverCommerce_CompareProductPage();
+        //ActionsUtils actions = new ActionsUtils();
 
         ExtentReportUtils.createTestReport("UI Test ,", "Compare Page Test");
 
         //Given user is on the application home page  https://allovercommerce.com/
         driver.get(ConfigReader.getProperty("allOverCommerce_url"));
-
-        BrowserUtils.clickWithTimeOut(comparePage.scaleIcon, 3);
+        action.sendKeys(Keys.PAGE_DOWN).perform();
+        WaitUtils.waitFor(3);
+        action.moveToElement(comparePage.scaleIcon).click().perform();
         ExtentReportUtils.pass("User added the product to the compare page");
         Thread.sleep(2000);
         ExtentReportUtils.passAndCaptureScreenshot("Product added to Compare list....");
@@ -215,10 +236,12 @@ public class US_07_ComparePage {
         ExtentReportUtils.passAndCaptureScreenshot("User Scroll-down the page....");
         Thread.sleep(2000);
 
+        action.sendKeys(Keys.PAGE_DOWN).perform();
 
-        ActionsUtils.actionsHoverOverOnElement(comparePage.procuct2);
+
+        action.moveToElement(comparePage.procuct2).perform();
         ExtentReportUtils.pass("User hover over the second product to add it to the compare page");
-        BrowserUtils.clickWithTimeOut(comparePage.scaleIcon3, 3);
+        action.moveToElement(comparePage.scaleIcon3).click().perform();
 
         Thread.sleep(2000);
         ExtentReportUtils.pass("User added the second product to the compare page");

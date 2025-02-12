@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Dell/IdeaProjects/first_testNG_project/src/test/java/myapp/tests">
+        <classes>
+            <class name="myapp.tests.US_01_CustomerRegistration">
+                <methods>
+                    <include name="testSuccessfulRegistration"/>
+                    <include name="testInvalidEmailRegistration"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_01_Natalia_T">
+                <methods>
+                    <include name="testSuccessfulRegistration"/>
+                    <include name="testInvalidEmailRegistration"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_02_CustomerRegistrationFails">
+                <methods>
+                    <include name="testRegistrationFailsWithExistingEmail"/>
+                    <include name="testRegistrationFailsWithExistingUsername"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_02_Natalia_T">
+                <methods>
+                    <include name="testRegistrationFailsWithExistingEmail"/>
+                    <include name="testRegistrationFailsWithExistingUsername"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_03_BillingAddressTest">
+                <methods>
+                    <include name="positiveTest"/>
+                    <include name="negativeTest"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_04_ShippingAddressTest">
+                <methods>
+                    <include name="positiveTest"/>
+                    <include name="negativeTest"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_07_ComparePage">
+                <methods>
+                    <include name="US07_TC01"/>
+                    <include name="US07_TC02"/>
+                    <include name="US07_TC03"/>
+                    <include name="US07_TC04"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_08_WhishlistPage">
+                <methods>
+                    <include name="US08_TC01"/>
+                    <include name="US08_TC02"/>
+                    <include name="US08_TC03"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_09_VendorRegistration">
+                <methods>
+                    <include name="successfulVendorRegistrationWithValidCredentials"/>
+                    <include name="missingRequiredInputFields_UnsuccessfulRegistration"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_10_VendorPasswordStrength">
+                <methods>
+                    <include name="testingWithShortLengthPassword"/>
+                    <include name="testingWithAllLevelPasswordLengths"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_11_VendorLogin">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_11_VendorMyAccount">
+                <methods>
+                    <include name="optionsVisibility"/>
+                    <include name="optionsClickibility"/>
+                    <include name="storeManagerClickibility"/>
+                    <include name="ordersClickibility"/>
+                    <include name="downloadsClickibility"/>
+                    <include name="addressesClickibility"/>
+                    <include name="accountDetailsClickibility"/>
+                    <include name="supportTicketsClickibility"/>
+                    <include name="followingsClickibility"/>
+                    <include name="logoutClickibility"/>
+                    <include name="wishlistClickibility"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_12_VendorBillingAdress">
+                <methods>
+                    <include name="validAddressTest"/>
+                    <include name="invalidAdressTest"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_13_VendorShippingAddress">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_14_Goychak">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_14_VendorAddProduct">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                </methods>
+            </class>
+            <class name="myapp.tests.US_15_VendorProductAddition">
+                <methods>
+                    <include name="testCase01"/>
+                    <include name="testCase02"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

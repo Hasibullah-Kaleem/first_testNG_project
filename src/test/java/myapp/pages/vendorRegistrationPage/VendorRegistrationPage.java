@@ -11,7 +11,7 @@ public class VendorRegistrationPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//span[normalize-space()='Register']")
+    @FindBy(linkText = "Register")
     public WebElement registerOption;
 
     @FindBy(xpath = "//a[normalize-space()='Signup as a vendor?']")

@@ -26,10 +26,10 @@ public class AlloverCommerce_WishListPage {
     @FindBy(xpath = "//a[@class='w-icon-heart']")
     public WebElement bigHeart2;
 
-    @FindBy(xpath = "//*[@id=\"yith-wcwl-row-13206\"]/td[5]/div/button")
+    @FindBy(xpath = "//*[@id='yith-wcwl-row-13206']/td[5]/div/button")
     public WebElement quickViewButton;
 
-    @FindBy(xpath = "//*[@id=\"yith-wcwl-row-13206\"]/td[5]/div/a")
+    @FindBy(xpath = "//*[@id='yith-wcwl-row-13206']/td[5]/div/a")
     public WebElement addToCartButton;
 
     //Locators for the Cart page
@@ -44,5 +44,9 @@ public class AlloverCommerce_WishListPage {
 
     @FindBy(xpath = "//a[@class='remove remove_from_wishlist fas fa-times']")
     public WebElement removeButton;
+
+    @FindBy(xpath = "//*[@id='product-13206']/div[2]/div/div[2]/div[2]/div/a")
+    public WebElement addToWislist;
+
 
 }
